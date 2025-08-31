@@ -8,7 +8,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Starting Claude Code test...");
 
     // Claude Code 起動コマンド（vibe-kanban と同じ）
-    let command = "npx -y @anthropic-ai/claude-code@latest -p --dangerously-skip-permissions --verbose --output-format=stream-json";
+    let command = " SHELL=/bin/bash /Users/shuntaka/.local/share/mise/installs/node/24.7.0/bin/claude --debug -p --dangerously-skip-permissions --verbose --output-format=stream-json";
 
     // テスト用プロンプト
     let prompt = "What is 2 + 2?";
