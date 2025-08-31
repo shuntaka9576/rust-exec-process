@@ -8,7 +8,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Starting Claude Code test...");
 
     // Claude Code 起動コマンド（vibe-kanban と同じ）
-    let command = "npx -y @anthropic-ai/claude-code@latest --dangerously-skip-permissions --verbose --output-format=stream-json";
+    let command = "npx -y @anthropic-ai/claude-code@latest -p --dangerously-skip-permissions --verbose --output-format=stream-json";
 
     // テスト用プロンプト
     let prompt = "What is 2 + 2?";
@@ -23,8 +23,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .arg(command)
         .stdin(Stdio::piped())
         .stdout(Stdio::piped())
-        .stderr(Stdio::piped())
-        .env("TERM", "dumb"); // vibe-kanban の59行目と同じ TTY 問題回避
+        .stderr(Stdio::piped());
 
     // vibe-kanban と同じ group_spawn() を使用（66行目）
     let mut child = command_builder.group_spawn()?;
